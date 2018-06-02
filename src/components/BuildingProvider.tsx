@@ -3,14 +3,14 @@ import { appContext } from '../appContext'
 import { BuildingState } from '../store/BuildingState'
 
 interface IBuildingProviderProps {
-  render: (buildingState: BuildingState) => React.ComponentClass
+  render: ({ buildingState }: any) => JSX.Element
 }
 
 interface IBuildingProviederState {
   buildingState: BuildingState
 }
 
-class BuildingProvider extends React.Component<IBuildingProviderProps, IBuildingProviederState> {
+export class BuildingProvider extends React.Component<IBuildingProviderProps, IBuildingProviederState> {
   public state = appContext.getState()
 
   public componentDidMount() {
@@ -23,8 +23,7 @@ class BuildingProvider extends React.Component<IBuildingProviderProps, IBuilding
   }
 
   public render() {
-    return this.props.render(this.state.buildingState)
+    const { buildingState } = this.state
+    return this.props.render({ buildingState })
   }
 }
-
-export default BuildingProvider
