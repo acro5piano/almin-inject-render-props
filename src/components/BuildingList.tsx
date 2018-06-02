@@ -7,21 +7,19 @@ interface IProvider {
   buildingState: BuildingState
 }
 
-export function _BuildingList({ buildingState }: IProvider) {
-  return (
-    <ul>
-      {buildingState.buildings.map(({name, id}: any) =>
-        <li key={id}>{name}</li>
-      )}
-    </ul>
-  )
-}
+const BuildingListBase = ({ buildingState }: IProvider) => (
+  <ul>
+    {buildingState.buildings.map(({name, id}: any) =>
+      <li key={id}>{name}</li>
+    )}
+  </ul>
+)
 
 export function BuildingList() {
-  return <BuildingProvider render={_BuildingList} />
+  return <BuildingProvider render={BuildingListBase} />
 }
 
 // TODO: not working
 export function BuildingListUsingHoc() {
-  return withBuildingState(_BuildingList)
+  return withBuildingState(BuildingListBase)
 }
