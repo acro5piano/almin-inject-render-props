@@ -1,21 +1,32 @@
 import * as React from 'react'
 import { appContext } from '../appContext'
+import { BuildingState } from '../store/BuildingState'
 
-class App extends React.Component {
-  public constructor(props: any) {
-    super(props);
+interface IAppState {
+  buildingState: BuildingState
+}
 
-    this.state = appContext.getState();
+class App extends React.Component<{}, IAppState> {
+  public constructor(props: {}) {
+    super(props)
+
+    this.state = appContext.getState()
   }
 
   public componentDidMount() {
-    console.log(appContext.getState())
+    this.setState(appContext.getState())
+    setInterval(() => console.log(appContext.getState()), 2000)
   }
 
   public render() {
     return (
       <div className="App">
         a
+        <ul>
+          {this.state.buildingState.buildings.map(({name, id}: any) =>
+            <li key={id}>{name}</li>
+          )}
+        </ul>
       </div>
     )
   }

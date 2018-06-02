@@ -4,8 +4,9 @@ import { BuildingStore } from './store/BuilidngStore'
 
 const dispatcher = new Dispatcher()
 const buildingStore = new BuildingStore()
+
 const storeGroup = new StoreGroup({
-  buildings: buildingStore,
+  buildingState: buildingStore,
 })
 
 export const appContext = new Context({

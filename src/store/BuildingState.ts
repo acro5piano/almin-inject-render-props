@@ -9,7 +9,7 @@ export interface IAppStatePayload {
   buildings: Building[]
 }
 
-export class BuildingsState {
+export class BuildingState {
   public buildings: Building[]
 
   constructor({ buildings }: IAppStateArgs) {
@@ -17,6 +17,7 @@ export class BuildingsState {
   }
 
   public reduce(payload: IAppStatePayload) {
+    return this
     const { buildings } = payload
     return Object.assign(this, { buildings })
   }

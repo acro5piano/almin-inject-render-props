@@ -1,12 +1,18 @@
 import { DispatchedPayload, Store } from 'almin'
-import { BuildingsState } from './BuildingState'
+import { Building } from '../entities/Building'
+import { BuildingState } from './BuildingState'
+
+const createBuilding = () => new Building({
+  id: 1,
+  name: 'Hoge',
+})
 
 export class BuildingStore extends Store {
   constructor() {
     super()
 
-    this.state = new BuildingsState({
-      buildings: [],
+    this.state = new BuildingState({
+      buildings: [createBuilding()],
     })
   }
 
