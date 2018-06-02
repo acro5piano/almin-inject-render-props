@@ -4,6 +4,7 @@ import App from './components/App'
 import registerServiceWorker from './registerServiceWorker'
 
 import './appContext'
+import './index.css'
 
 ReactDOM.render(
   <App />,
