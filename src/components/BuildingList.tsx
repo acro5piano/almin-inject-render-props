@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Building } from '../entities/Building'
 import { BuildingState } from '../store/BuildingState'
 import { BuildingProvider } from './BuildingProvider'
 import { withBuildingState } from './withBuildingState'
@@ -9,7 +10,7 @@ interface IProvider {
 
 const BuildingListBase = ({ buildingState }: IProvider) => (
   <ul>
-    {buildingState.buildings.map(({name, id}: any) =>
+    {buildingState.buildings.map(({name, id}: Building) =>
       <li key={id}>{name}</li>
     )}
   </ul>

@@ -3,7 +3,7 @@ import { appContext } from '../appContext'
 import { BuildingState } from '../store/BuildingState'
 
 interface IBuildingProviderProps {
-  render: ({ buildingState }: any) => JSX.Element
+  render: ({ buildingState }: { buildingState: BuildingState }) => JSX.Element
 }
 
 interface IBuildingProviederState {
